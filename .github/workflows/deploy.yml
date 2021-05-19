@@ -20,6 +20,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Upload to Azure blob storage
@@ -28,7 +29,7 @@ jobs:
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
           # The connection string for the storage account
-          connection_string: $BLOB_STORAGE_CONNSTRING
+          connection_string: ${{ secrets.BLOB_STORAGE_CONNSTRING }}
           # The name of the storage account container these assets will be uploaded to
           container_name: files
           # The name of the directory you want to upload
