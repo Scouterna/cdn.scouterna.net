@@ -1,6 +1,6 @@
 # cdn.scouterna.net
 
-Files added in `/files` here will be available on the web through `https://cdn.scouterna.net`.
+Files added in `/files` here are also made available on the web at `https://cdn.scouterna.net`.
 
 ## Use
 
