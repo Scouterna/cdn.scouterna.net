@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Inside frame</title>
+		<script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const textElement = document.querySelector('input[type="text"]');
+                const buttonElement = document.querySelector('input[type="button"]');
+                const listElement = document.querySelector('ul');
+                buttonElement.addEventListener("click", () => {
+                    // Replace "*" with the targets domain like "https://secure.example.net"
+                    window.parent.postMessage(textElement.value, "*");
+                });
+                window.addEventListener("message", (event) => {
+                    const li = document.createElement("li");
+                    li.innerText = event.data;
+                    listElement.appendChild(li);
+                });
+            });
+		</script>
+	</head>
+	<body>
+		<p>
+			<input type="text" />
+			<input type="button" value="send"/>
+		</p>
+		<p><b>Messages:</b></p>
+		<ul>
+		</ul>
+	</body>
+</html>

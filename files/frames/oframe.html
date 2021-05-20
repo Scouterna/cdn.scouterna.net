@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Outside frame</title>
+		<script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const textElement = document.querySelector('input[type="text"]');
+                const buttonElement = document.querySelector('input[type="button"]');
+                const listElement = document.querySelector('ul');
+                buttonElement.addEventListener("click", () => {
+                    // Replace "*" with the targets domain like "https://secure.example.net"
+                    window.frames[0].postMessage(textElement.value, "https://scoutid.se");
+                });
+                window.addEventListener("message", (event) => {
+                    const li = document.createElement("li");
+                    li.innerText = event.data;
+                    listElement.appendChild(li);
+                });
+            });
+		</script>
+		<style>
+			body > div {
+				height: 50vh;
+				overflow: scroll;
+			}
+			body > iframe {
+                height: 50vh;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+		<p>
+			<input type="text" />
+			<input type="button" value="send"/>
+		</p>
+		<p><b>Messages:</b></p>
+		<ul>
+		</ul>
+		</div>
+		<iframe src="https://scoutid.se/admin/iframe.html"></iframe>
+	</body>
+</html>
